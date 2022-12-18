@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- style css -->
+    <link rel="stylesheet" href="./style.css">
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/ad3f80fd3a.js" crossorigin="anonymous"></script>
+    <!-- whatsapp link -->
+    <!-- <script src="https://apps.elfsight.com/p/platform.js" defer></script> -->
+    <title>commission</title>
+</head>
+<body>
+    <header class="home-container">
+        <!-- <h2>Derrick Golden Art</h2> -->
+        <div class="title">
+            <i class="fa-solid fa-bars bars s-all"></i>
+            <h2>Derrick <span id="gold">Golden</span> Art</h2>
+            <i class="fa-solid fa-cart-shopping s-all lst-crt"><span id="cart-no">0</span></i>
+        </div>
+        <nav class="toggle">
+            <i class="fa-solid fa-xmark cancel s-all"></i>
+            <ul>
+                <li><a href="./index.html" role="button">HOME</a></li>        
+                <li class="inner-gallery"><a style="cursor: default;"  href="#" role="button"> GALLERY
+                    <ul id="display">
+                        <a id="gray" href="./gallery.html">GRAY</a>
+                        <a id="col" href="./gallery.html">COLORED</a>
+                    </ul>
+                    </a></li>
+                <li><a href="./biography.html" role="button">BIOGRAPHY</a></li>
+                <li><a href="./commission.html" role="button">COMMISSION ART</a></li>
+                <li><a href="#" role="button" class="contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- section -->
+     <!-- empty cart -->
+     <div class="emp-cart display-cart">
+        <p>Your cart is empty!</p> 
+        <i class="fa-solid fa-cart-shopping large-cart"></i>
+        <button class="btn-cart"><a class="btn-cart" href="./commission.html">Order Art</a></button>
+    </div>
+    <div class="commission-section">
+        <div class="prices">
+            <p class="inner-content">The total investment when ordering art 
+                depends on size and number of persons.</p>
+            <p class="inner-content">The prices are one person. There is an extra 
+                charge of Ksh.500 for each extra person.
+            </p>
+            <div class="grey">
+                <div class="price">
+                    <img src="./drawings/IMG_20210629_202244.jpg" alt="">
+                    <div class="cost">
+                        <p class="p-t in-t"><strong>For black and white drawings(pencil on paper)</strong></p>
+                        <!-- <p class="in-t"><strong>Investment</strong></p> -->
+                        <p id="g-A4"><strong>A4 size</strong>(30 by 21cm) is <strong>Ksh.3,000/=</strong>
+                            <button class="order-btn btn-cart">ORDER A4</button></p>
+                        <p id="g-A3"><strong>A3 size</strong>(42 by 30cm) is <strong>Ksh.4,500/=</strong>
+                            <button class="order-btn btn-cart">ORDER A3</button></p>
+                        <p class="p-t in-t" style="margin-top: 1.5rem;">
+                            <strong>For black and White painting(oil on canvas) </strong> </p>
+                        <p id="g-A2"><strong>A2 size</strong>(60 by 42cm) is <strong>Ksh.7,500/=</strong>
+                            <button class="order-btn btn-cart">ORDER A2</button></p>  
+                    </div>
+                </div>
+            </div>
+            <div class="coloured">
+                <div class="price">
+                    <img src="./drawings/colored/IMG_20220424_112519.jpg" alt="">
+                    <div class="cost">
+                        <p class="p-t in-t"><strong>For coloured paintings(oil on canvas) </strong> </p>
+                        <!-- <p class="in-t"><strong>Investment</strong></p> -->
+                        <p id="c-A3"><strong>A3 size</strong>(42 by 30cm) is <strong>Ksh.6,000/=</strong>
+                            <button class="order-btn btn-cart">ORDER A3</button></p>
+                        <p id="c-A2"><strong>A2 size</strong>(60 by 42cm) is <strong>Ksh.9,000/=</strong>
+                            <button class="order-btn btn-cart">ORDER A2</button></p>
+                        <p class="drk">Incase you're unable to order, need a customized size or painting 
+                            other than portraits, contact
+                            <a href="#">Derrick</a>
+                        </p>
+                    </div>
+                </div>
+            </div>  
+        </div>
+
+        <!-- calling and whatsapp -->
+        <div class="toggle-pop contact-pop">
+
+        </div>
+                <!-- live chat -->
+            <!-- <div class="elfsight-app-922cfb2f-d1da-4e6f-b1f9-4806ea063f72"></div> -->
+        </div>
+        <!-- number of forms -->
+        <form class="number num" action="" name="num">
+            <p>Number of persons in a single photo you want drawn.</p>
+            <input type="number" name="num" id="num" value="" placeholder="1 person(s)" required>
+            <button class="btn-cart" type="submit">Submit</button>
+        </form>
+       
+        <!-- cart details -->
+        <div  class="cart-container">
+            <div class="cart">
+                <h2>Cart</h2>
+                <div class="inner-cart"></div>
+                
+                <form class="checkout" action="">
+                <h3>TOTAL: <span>kSH. <span id="subtotal">0000</span></span></h3>
+                <button class="btn-cart" type="submit">CHECKOUT</button>
+                <button class="btn-cart shop" type="button">CONTINUE SHOP</button>
+            </form>
+        </div>
+    </div>
+   
+    <!-- client infor -->
+    <div style="right: 120%;" class="client-infor">
+        <i class="fa-solid fa-xmark cancel-pop"></i>
+        <h2>Contact Information</h2>
+        <p>Derrick will contact you to send photo(s) to be drawn and 50%
+            downpayment. Rest of the amount will be cleared on delivery.
+        </p>
+        <form target="_blank" action="https://formsubmit.co/goldenderrick95@gmail.com" method="POST" name="name">
+            <input type="text" name="name" id="name" placeholder="Your Name">
+            <input type="number" name="number" id="no" placeholder="Phone Number" required>
+            <input type="email" name="Email" id="email" placeholder="Your Email">
+            <input type="hidden" name="Order_Info" id="size2" value="">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_captcha" value="false">
+            <button class="btn-cart" type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="notifications note">
+        <!-- <p>otify</p> -->
+    </div>
+    <!-- footer -->
+    <footer class="footer-socials" >
+        
+    </footer>
+    <script src="./commission.js" ></script>
+    <script src="./export.js"></script>
+</body>
+</html>
