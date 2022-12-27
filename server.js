@@ -4,6 +4,9 @@ const PORT = process.env.PORT || 8000;
 
 const app = express()
 
+app.use('/',(req,res)=>{
+    res.sendStatus(200)
+})
 app.get('/golden/*',getHome)
 app.listen(PORT,()=>console.log("Listening on port", PORT))
 
