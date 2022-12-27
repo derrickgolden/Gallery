@@ -13,8 +13,9 @@ app.listen(PORT,()=>console.log("Listening on port", PORT))
 const {readFile, createReadStream, rmSync} = require('fs')
 const path = require('path')
 
+const filePath = ""
 async function getHome(req,res){
-    const filePath = path.join(`/${req.params[0]}`)
+    filePath = path.join(`${__dirname}/${req.params[0]}`)
     console.log(filePath)
     createReadStream(filePath)
         .on("error",() => notFound(req,res))
@@ -23,5 +24,5 @@ async function getHome(req,res){
 
 function notFound(req,res){
     res.writeHead(404,{"Content-Type":"text/plain"})
-    res.end("Page Not Found, Try Later")
+    res.end(`Page Not Found, Try Later${filePath}`)
 }
