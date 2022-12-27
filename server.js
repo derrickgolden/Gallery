@@ -7,8 +7,17 @@ const app = express()
 // app.use('/',(req,res)=>{
 //     res.sendStatus(200)
 // })
-app.get('/*',getHome)
+app.get('/',getHome)
 app.listen(PORT,()=>console.log("Listening on port", PORT))
+
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept'
+    )
+    next()
+  })
 
 const {readFile, createReadStream, rmSync} = require('fs')
 const path = require('path')
@@ -24,5 +33,5 @@ async function getHome(req,res){
 
 function notFound(req,res){
     res.writeHead(404,{"Content-Type":"text/plain"})
-    res.end(`Page Not Found, Try Later${filePath}`)
+    res.end(`Page Not Found, Try Later`)
 }
