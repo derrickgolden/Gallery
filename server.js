@@ -13,14 +13,7 @@ app.use("/css", express.static(__dirname + 'public/css'))
 app.get('/golden/*',getHome)
 app.listen(PORT,()=>console.log("Listening on port", PORT))
 
-// app.use(function (req, res, next) {
-//     res.header('Access-Control-Allow-Origin', '*')
-//     res.header(
-//       'Access-Control-Allow-Headers',
-//       'Origin, X-Requested-With, Content-Type, Accept'
-//     )
-//     next()
-//   })
+
 
 const {readFile, createReadStream, rmSync} = require('fs')
 const path = require('path')
