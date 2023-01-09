@@ -4,9 +4,12 @@ const PORT = process.env.PORT || 8000;
 
 const app = express()
 
-// app.use('/',(req,res)=>{
-//     res.sendStatus(200)
-// })
+//static files
+app.use(express.static('public'))
+app.use("/css", express.static(__dirname + 'public/css'))
+// app.use("/img", express.static(__dirname + 'public/img'))
+// app.use("/js", express.static(__dirname + 'public/js'))
+
 app.get('/golden/*',getHome)
 app.listen(PORT,()=>console.log("Listening on port", PORT))
 
