@@ -24,7 +24,7 @@ const socials = `
         </div>
         `
 const contactMe =`
-<i class="fa-solid fa-xmark cancel-pop"></i>
+        <i class="fa-solid fa-xmark cancel-pop"></i>
             <p>Get directly in touch with Golden Derrick for any inquiry...</p>
             <!-- phone call -->
             <div class="direct direct-contact">

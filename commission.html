@@ -118,10 +118,16 @@
     <div style="right: 120%;" class="client-infor">
         <i class="fa-solid fa-xmark cancel-pop"></i>
         <h2>Contact Information</h2>
-        <p>Derrick will contact you to send photo(s) to be drawn and 50%
+        <p>You will contacted to send photo(s) to be drawn and 50%
             downpayment. Rest of the amount will be cleared on delivery.
         </p>
-        <form target="_blank" action="https://formsubmit.co/goldenderrick95@gmail.com" method="POST" name="name">
+        <form target="_blank" name="name" class="client_details">
+            <input type="text" name="name" id="name" placeholder="Your Name">
+            <input type="number" name="number" id="no" placeholder="Phone Number" required>
+            <!-- <input type="email" name="Email" id="email" placeholder="Your Email"> -->
+            <button class="btn-cart" type="submit">Submit</button>
+        </form>
+        <!-- <form target="_blank" action="https://formsubmit.co/goldenderrick95@gmail.com" method="POST" name="name">
             <input type="text" name="name" id="name" placeholder="Your Name">
             <input type="number" name="number" id="no" placeholder="Phone Number" required>
             <input type="email" name="Email" id="email" placeholder="Your Email">
@@ -129,7 +135,7 @@
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_captcha" value="false">
             <button class="btn-cart" type="submit">Submit</button>
-        </form>
+        </form> -->
     </div>
     <div class="notifications note">
         <!-- <p>otify</p> -->
@@ -138,6 +144,10 @@
     <footer class="footer-socials" >
         
     </footer>
+    
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    
     <script src="./commission.js" ></script>
     <script src="./export.js"></script>
 </body>

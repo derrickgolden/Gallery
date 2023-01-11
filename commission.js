@@ -1,4 +1,6 @@
 
+// const import { sendmail } from "./public/js/mail.js";
+
 // handling the size and cost
 const size = {'g-A4':3000, 'g-A3':4500, 'g-A2':7500, 'c-A3':6000, 'c-A2':9000};
 const artType ={c: "COLORED PAINTING",g: "BLACK AND WHITE PAINTING"}
@@ -89,8 +91,9 @@ let checkOut = document.body.querySelector(".checkout")
 let clientInfor = document.body.querySelector(".client-infor")
 checkOut.addEventListener("submit",(e)=>{
     e.preventDefault();
-    document.body.querySelector("#size2").setAttribute("value",JSON.stringify(orderInfo))
+    // document.body.querySelector("#size2").setAttribute("value",JSON.stringify(orderInfo))
     window.scrollTo(0,0);
+    clientCont.removeAttribute("style")
     clientInfor.removeAttribute("style")
 })
 checkOut.querySelector(".shop").addEventListener("click", ()=>{
@@ -109,14 +112,33 @@ function notification(text,color){
 
 // client infor
 clientInfor.querySelector(".fa-xmark").addEventListener("click", ()=>{
-    console.log("j")
     clientInfor.setAttribute("style","right:120%")
 })
-clientInfor.querySelector("form").addEventListener("submit",()=>{
-    setTimeout(()=>{
-        location.reload()
-    },2000)
+
+// using socket to send emails
+const socket = io()
+socket.on('connect',()=>{
+    console.log("client connect...")
+    const clientDetails = document.body.querySelector('.client_details')
+    clientDetails.addEventListener("submit",(e)=>{
+        e.preventDefault();
+        const name = clientDetails.querySelector('#name').value
+        const no = clientDetails.querySelector('#no').value
+        socket.emit('order',{name,no,orderInfo})
+    })
 })
+socket.on('success',(response)=>{
+    console.log(response)
+    localStorage.removeItem("newdom")
+    notification('Order Placed',"rgb(180, 216, 180)")
+    clientInfor.setAttribute("style","right:120%")
+})
+socket.on('error',(error)=>{
+     clientInfor.setAttribute("style","right:120%")
+    contactPop.querySelector('p').innerHTML = 'We apologize, your order is not fullfilled. Kindly contact us directly to complete your order'
+    directContact()
+    console.log(error)
+ })
 
 // listening for cart
 document.body.querySelector(".lst-crt").addEventListener("click", displayCart)
@@ -125,13 +147,11 @@ document.body.querySelector(".lst-crt").addEventListener("click", displayCart)
 function displayCart(){
     if(orderInfo.length == 0){
         let emptyCart = document.body.querySelector(".emp-cart")
-        emptyCart.classList.remove("display-cart")
-        
+        emptyCart.classList.remove("display-cart")  
      }else{
          window.scrollTo(0,0)
-         
-         clientCont.setAttribute("style","transform:translateX(120%)")
-         
+    
+         clientCont.setAttribute("style","transform:translateX(120%)")   
      }
 }
 
@@ -171,3 +191,5 @@ window.addEventListener("load", ()=>{
         directContact()
     }
 })
+
+
