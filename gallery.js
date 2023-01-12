@@ -4,7 +4,7 @@
 let grayDom =`
 <H3 class="art-type">BLACK AND WHITE DRAWING(GRAY)</H3>
 <div class="gallery-images">
-    <img src="./drawings/gray/betty_complete.JPG" alt="BLACK AND WHITE DRAWING">
+    <img src="./drawings/gray/sm_betty_complete.JPG" alt="BLACK AND WHITE DRAWING">
     <img src="./drawings/gray/DSCN0125.JPG" alt="BLACK AND WHITE DRAWING">
     <img src="./drawings/gray/IMG_20210312_145251.jpg" alt="BLACK AND WHITE DRAWING">
     <img src="./drawings/gray/IMG_20210709_152052.jpg" alt="BLACK AND WHITE DRAWING">
