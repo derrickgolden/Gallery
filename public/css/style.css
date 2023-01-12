@@ -315,8 +315,6 @@ li> a:hover::after{
     .images{
         height: 70vh;
     }
-    .to-gallery{
-    }
 }
 
 
@@ -373,21 +371,72 @@ li> a:hover::after{
 }
 .gallery-images{
     margin: 3vh .5rem 7vh .5rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    /* border: 2px solid rgb(133, 29, 29); */
+    display: grid;
+    grid-template-columns: auto auto auto;
+    text-align: center;
+    /* gap: 4rem; */
+    /* justify-content: space-around; */
+    border: 2px solid rgb(133, 29, 29);
+}
+.gallery-images div{
+    border: 2px solid rgb(133, 29, 29);
+
+}
+.Lscape1{
+    grid-column: 2 / span 2;
+    align-self: center;
+}
+.Lscape2{
+    grid-column: 1 / span 2;
+    text-align: left;
+}
+.Lscape3{
+    grid-column: 1 / span 2;
+}
+.Lscape4{
+    grid-column: 1 / span 2;
+}
+.Lscape5{
+    grid-column: 1 / span 2;
 }
 .gallery-images img{
     width: 22rem;
     height: 30rem;
-    margin: 1rem;
+    margin: 1rem 0;
     border: 2px solid rgb(192, 190, 190);
 }
 .landscape{
     height: 22rem !important;
     width: auto !important;
     
+}
+@media (max-width:1200px) {
+    .gallery-images{
+        grid-template-columns: auto auto;
+    }
+    .Lscape1{
+        grid-column: 1 / span 2;
+        align-self: center;
+    }
+    .Lscape2{
+        text-align: center;
+    }
+}
+@media (max-width:810px) {
+    .landscape{
+        width: 98% !important;
+        height: auto !important;
+        margin: auto;
+    }
+    .gallery-images{
+        grid-template-columns: auto;
+    }
+    
+    .Lscape{
+        grid-column: auto;
+        text-align: center;
+        /* margin: 1rem 0; */
+    }
 }
 .inner-gallery{
     display: flex;
@@ -440,6 +489,12 @@ li> a:hover::after{
     /* border: 2px solid red; */
     position: relative;
     margin: auto;
+
+}
+.blur{
+    filter: blur(2px);
+    pointer-events: none;
+    user-select: none;
 }
 .contact-pop{
     background-color: #fff;
@@ -718,7 +773,7 @@ table th{
         width: 100%;
     }
     .client-infor{
-        width: 100%;
+        width: 90%;
     }
     .prices{
         margin: 2rem 0;
@@ -726,14 +781,14 @@ table th{
 }
 /* client information */
 .client-infor{
-    width: 100%;
-    margin: 8rem;
+    width: 90%;
+    margin: 1rem;
     border:2px solid var(--clr-grey-9);
     padding: 1.4rem;
     position: absolute;
-    top:4%;
+    top:8%;
     text-align: center;
-    z-index: 6;
+    /* z-index: 6; */
     background-color: var(--clr-white);
     transition: var(--transition);
 }

@@ -88,6 +88,7 @@ contact.addEventListener("click", directContact)
 //cancel pop
 document.body.querySelector(".cancel-pop").addEventListener("click",()=>{
     contactPop.classList.add("toggle-pop")
+    commSection.classList.remove("blur")
 })
 //copy contact
 document.body.querySelector('.copy-no').addEventListener('click',(e)=>{

@@ -21,11 +21,13 @@ document.body.querySelectorAll("p").forEach((element)=>{
 })
 
 // direct contact function 
+const commSection = document.body.querySelector(".commission-section")
 document.body.querySelector(".drk").addEventListener("click",directContact)
 function directContact(){
     contactPop.classList.remove("toggle-pop")
     nav.classList.add("toggle")
     menu.removeAttribute("style")
+    commSection.classList.add("blur")
 }
 
 // create dom function
