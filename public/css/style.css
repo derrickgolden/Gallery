@@ -53,8 +53,6 @@
   body{
     font-family: var(--ff-primary);
     position: relative;
-    /* color: var(--clr-grey-6); */
-    /* color: var(--clr-primary-5); */
     letter-spacing: 1px;
     line-height: 1.4rem;
     font-size: large;
@@ -308,6 +306,7 @@ li> a:hover::after{
     }
     li a:hover::after{
         scale: 0;
+        display: none;
      }
     .mobile{
         font-size: 1rem;
@@ -374,13 +373,6 @@ li> a:hover::after{
     display: grid;
     grid-template-columns: auto auto auto;
     text-align: center;
-    /* gap: 4rem; */
-    /* justify-content: space-around; */
-    border: 2px solid rgb(133, 29, 29);
-}
-.gallery-images div{
-    border: 2px solid rgb(133, 29, 29);
-
 }
 .Lscape1{
     grid-column: 2 / span 2;
@@ -390,13 +382,7 @@ li> a:hover::after{
     grid-column: 1 / span 2;
     text-align: left;
 }
-.Lscape3{
-    grid-column: 1 / span 2;
-}
-.Lscape4{
-    grid-column: 1 / span 2;
-}
-.Lscape5{
+.Lscape3 .Lscape4 .Lscape5{
     grid-column: 1 / span 2;
 }
 .gallery-images img{
@@ -407,9 +393,9 @@ li> a:hover::after{
 }
 .landscape{
     height: 22rem !important;
-    width: auto !important;
-    
+    width: auto !important; 
 }
+
 @media (max-width:1200px) {
     .gallery-images{
         grid-template-columns: auto auto;
@@ -430,8 +416,7 @@ li> a:hover::after{
     }
     .gallery-images{
         grid-template-columns: auto;
-    }
-    
+    }  
     .Lscape{
         grid-column: auto;
         text-align: center;
@@ -489,10 +474,10 @@ li> a:hover::after{
     /* border: 2px solid red; */
     position: relative;
     margin: auto;
-
 }
 .blur{
-    filter: blur(2px);
+    background: linear-gradient(rgba(0,0,0,.06),rgba(0,0,0,.06));
+    filter: blur(1.5px);
     pointer-events: none;
     user-select: none;
 }
@@ -501,6 +486,7 @@ li> a:hover::after{
     padding: 1rem;
     width: 22rem;
     height: auto;
+    border-radius: 5px;
     box-shadow: var(--dark-shadow);
     color: var(--clr-grey-4);
     font-size: 1.5rem;
@@ -508,9 +494,11 @@ li> a:hover::after{
     place-items: center;
     text-align: center;
     position: absolute;
-    top: 10vh;
-    right: 5vw;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%);
     transition: var(--transition);
+    line-height: 1.5;
 }
 .toggle-pop{
     display: none;
@@ -616,7 +604,8 @@ li> a:hover::after{
 /* number of people */
 .number{
     box-shadow: var(--dark-shadow);
-    background-color: rgb(230, 230, 220);
+    /* background-color: rgb(230, 230, 220); */
+    background-color: var(--clr-white);
     border: 1px solid var(--clr-grey-8);
     z-index: 100;
     padding: 1rem .5rem;
@@ -627,6 +616,7 @@ li> a:hover::after{
     color: var(--clr-grey-4);
     position: fixed;
     top: 20vh;
+    right: 8vw;
 }
 .num{
     display: none;
@@ -756,9 +746,9 @@ table th{
 /* notifications */
 .notifications{
     font-size: 2rem;
-    /* background-color: rgb(180, 216, 180); */
-    /* background-color: rgb(201, 201, 140); */
+    line-height: 1.5;
     position: fixed;
+    right: 25%;
     top: 10rem;
     padding: 1rem;
     transform: var(--transition);
@@ -769,6 +759,11 @@ table th{
 }
 
 @media screen and (max-width:640px){
+    /* number of people */
+    .number{
+        right: 50%;
+        transform: translateX(50%);
+    }
     .cart{
         width: 100%;
     }
@@ -779,6 +774,7 @@ table th{
         margin: 2rem 0;
     }
 }
+
 /* client information */
 .client-infor{
     width: 90%;
@@ -792,7 +788,7 @@ table th{
     background-color: var(--clr-white);
     transition: var(--transition);
 }
-.client-infor form *:not(button){
+.client-infor form input{
     display: block;
     width: 100%;
     padding:.4rem 1rem;
@@ -800,8 +796,31 @@ table th{
     margin: 1rem 0;
     font-size: 1.4rem;
 }
-
-
+.loader{
+    display: fixed;
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader::after{
+    content: "";
+    justify-items: center;
+    width: 40px;
+    height: 40px;
+    border: 5px solid var(--clr-grey-9);
+    border-radius: 50%;
+    border-top-color: var(--clr-grey-2);
+    animation: loading 1s ease-in-out infinite;
+}
+.load{
+    display: none;
+}
+@keyframes loading {
+    form {transform: rotate(0turn);}
+    to {transform: rotate(1turn);}
+}
 
 
 

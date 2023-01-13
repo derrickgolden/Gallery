@@ -17,14 +17,16 @@ document.body.querySelectorAll("p").forEach((element)=>{
         if(price = size[id])
         form.classList.remove("num")
         form.querySelector("input").focus();
+        commSection.classList.add("blur")
     })
 })
 
 // direct contact function 
-const commSection = document.body.querySelector(".commission-section")
+    /* filter: blur(2px); */
 document.body.querySelector(".drk").addEventListener("click",directContact)
 function directContact(){
     contactPop.classList.remove("toggle-pop")
+    contactPop.setAttribute("style",`top:${header.offsetHeight +20}px`)
     nav.classList.add("toggle")
     menu.removeAttribute("style")
     commSection.classList.add("blur")
@@ -73,7 +75,8 @@ form.addEventListener("submit",(e)=>{
     if(value && value > 0){
         let subTotal = price + ((value-1)*500);
         form.classList.add("num")
-        
+        commSection.classList.remove("blur")
+
         const id = new Date().getTime().toString();
         let info ={size: aSize, type_art:type, people: persons, price: subTotal}
         let details = {id, info}
@@ -93,13 +96,16 @@ let checkOut = document.body.querySelector(".checkout")
 let clientInfor = document.body.querySelector(".client-infor")
 checkOut.addEventListener("submit",(e)=>{
     e.preventDefault();
-    // document.body.querySelector("#size2").setAttribute("value",JSON.stringify(orderInfo))
     window.scrollTo(0,0);
     clientCont.removeAttribute("style")
     clientInfor.removeAttribute("style")
+    commSection.classList.add("blur")
 })
+
+const clientDetails = document.body.querySelector('.client_details')
 checkOut.querySelector(".shop").addEventListener("click", ()=>{
     clientCont.removeAttribute("style")
+    commSection.classList.remove("blur")
 })
 //display notification function
 function notification(text,color){
@@ -115,15 +121,19 @@ function notification(text,color){
 // client infor
 clientInfor.querySelector(".fa-xmark").addEventListener("click", ()=>{
     clientInfor.setAttribute("style","right:120%")
+    commSection.classList.remove("blur")
+    clientDetails.querySelector('button').innerHTML = 'Submit'
+    clientDetails.querySelector('.loader').classList.add("load")
 })
 
 // using socket to send emails
 const socket = io()
 socket.on('connect',()=>{
     console.log("client connect...")
-    const clientDetails = document.body.querySelector('.client_details')
     clientDetails.addEventListener("submit",(e)=>{
         e.preventDefault();
+        clientDetails.querySelector('button').innerHTML = 'Submitting...'
+        clientDetails.querySelector('.loader').classList.remove("load")
         const name = clientDetails.querySelector('#name').value
         const no = clientDetails.querySelector('#no').value
         socket.emit('order',{name,no,orderInfo})
@@ -132,13 +142,20 @@ socket.on('connect',()=>{
 socket.on('success',(response)=>{
     console.log(response)
     localStorage.removeItem("newdom")
-    notification('Order Placed',"rgb(180, 216, 180)")
+    notification('Order Placed. Thank You.',"rgb(180, 216, 180)")
     clientInfor.setAttribute("style","right:120%")
+    setTimeout(()=>{
+        commSection.classList.remove("blur");
+        location.reload();
+    },3000)
 })
 socket.on('error',(error)=>{
      clientInfor.setAttribute("style","right:120%")
-    contactPop.querySelector('p').innerHTML = 'We apologize, your order is not fullfilled. Kindly contact us directly to complete your order'
+     clientDetails.querySelector('button').innerHTML = 'Submit'
+    clientDetails.querySelector('.loader').classList.add("load")
+    contactPop.querySelector('p').innerHTML = 'We apologize, your order has not been fullfilled. Kindly contact us directly to complete your order'
     directContact()
+    commSection.classList.add("blur")
     console.log(error)
  })
 
@@ -152,9 +169,9 @@ function displayCart(){
         emptyCart.classList.remove("display-cart")  
      }else{
          window.scrollTo(0,0)
-    
          clientCont.setAttribute("style","transform:translateX(120%)")   
      }
+     commSection.classList.add("blur")
 }
 
 // delete an order and reload

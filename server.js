@@ -46,8 +46,14 @@ const path = require('path')
 
 // const filePath = ""
 async function getHome(req,res){
-    const filePath = path.join(`${__dirname}/${req.params[0]}`)
-    // console.log(filePath)
+    let filePath = "";
+    console.log(req.params[0])
+    if(/^(home|art|index|gallery|biography|commission)$/.test(req.params[0])){
+        filePath = path.join(`${__dirname}/${req.params[0]}.html`)
+    }else{
+        filePath = path.join(`${__dirname}/${req.params[0]}`)
+        console.log(filePath)
+    }
     createReadStream(filePath)
         .on("error",() => notFound(req,res))
         .pipe(res)

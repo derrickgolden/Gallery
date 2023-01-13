@@ -88,7 +88,7 @@ contact.addEventListener("click", directContact)
 //cancel pop
 document.body.querySelector(".cancel-pop").addEventListener("click",()=>{
     contactPop.classList.add("toggle-pop")
-    commSection.classList.remove("blur")
+    if(commSection) commSection.classList.remove("blur")
 })
 //copy contact
 document.body.querySelector('.copy-no').addEventListener('click',(e)=>{
@@ -101,13 +101,17 @@ document.body.querySelector('.copy-no').addEventListener('click',(e)=>{
 
 // positioning nav
 let titleHeight = document.body.querySelector(".title").offsetHeight
+let header = document.body.querySelector(".head")
 nav.setAttribute("style",`top:${titleHeight}px`)
 
 // direct contact function 
+const commSection = document.body.querySelector(".outer-body")
 function directContact(){
     contactPop.classList.remove("toggle-pop")
+    if(header) contactPop.setAttribute("style",`top:${header.offsetHeight + 20}px`)
     nav.classList.add("toggle")
     menu.removeAttribute("style")
+    if(commSection) commSection.classList.add("blur")
 }
 
 // get storage items
