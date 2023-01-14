@@ -1,5 +1,5 @@
 
-let photos = ["./drawings/gray/IMG_20220907_094020_HDR.jpg"];
+let photos = ["./drawings/gray/sm_kuria_comp.jpg"];
 let images = document.body.querySelector(".images")
 console.log(images)
 
