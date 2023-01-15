@@ -120,7 +120,7 @@ function notification(text,color){
 
 // client infor
 clientInfor.querySelector(".fa-xmark").addEventListener("click", ()=>{
-    clientInfor.setAttribute("style","right:120%")
+    clientInfor.setAttribute("style","right:200%")
     commSection.classList.remove("blur")
     clientDetails.querySelector('button').innerHTML = 'Submit'
     clientDetails.querySelector('.loader').classList.add("load")
@@ -132,25 +132,30 @@ socket.on('connect',()=>{
     console.log("client connect...")
     clientDetails.addEventListener("submit",(e)=>{
         e.preventDefault();
-        clientDetails.querySelector('button').innerHTML = 'Submitting...'
-        clientDetails.querySelector('.loader').classList.remove("load")
-        const name = clientDetails.querySelector('#name').value
         const no = clientDetails.querySelector('#no').value
-        socket.emit('order',{name,no,orderInfo})
+        if(no.length < 10){
+            clientDetails.querySelector('.warn').innerHTML = "Enter valid phone number"
+        }else{
+            clientDetails.querySelector('.warn').innerHTML = ""
+            clientDetails.querySelector('button').innerHTML = 'Submitting...'
+            clientDetails.querySelector('.loader').classList.remove("load")
+            const name = clientDetails.querySelector('#name').value
+            socket.emit('order',{name,no,orderInfo})
+        }
     })
 })
 socket.on('success',(response)=>{
     console.log(response)
     localStorage.removeItem("newdom")
     notification('Order Placed. Thank You.',"rgb(180, 216, 180)")
-    clientInfor.setAttribute("style","right:120%")
+    clientInfor.setAttribute("style","right:200%")
     setTimeout(()=>{
         commSection.classList.remove("blur");
         location.reload();
     },3000)
 })
 socket.on('error',(error)=>{
-     clientInfor.setAttribute("style","right:120%")
+     clientInfor.setAttribute("style","right:200%")
      clientDetails.querySelector('button').innerHTML = 'Submit'
     clientDetails.querySelector('.loader').classList.add("load")
     contactPop.querySelector('p').innerHTML = 'We apologize, your order has not been fullfilled. Kindly contact us directly to complete your order'

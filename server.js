@@ -36,7 +36,7 @@ app.use("/css", express.static(__dirname + 'public/css'))
 // app.use("/img", express.static(__dirname + 'public/img'))
 // app.use("/js", express.static(__dirname + 'public/js'))
 
-app.get('/golden/*',getHome)
+app.get('/*',getHome)
 server.listen(PORT,()=>console.log("Listening on port", PORT))
 
 
@@ -47,12 +47,14 @@ const path = require('path')
 // const filePath = ""
 async function getHome(req,res){
     let filePath = "";
-    console.log(req.params[0])
-    if(/^(home|art|index|gallery|biography|commission)$/.test(req.params[0])){
+    if(req.params[0].length == 0){
+        filePath = path.join(`${__dirname}/art.html`)
+    }
+    else if(/^(home|art|index|gallery|biography|commission)$/.test(req.params[0])){
         filePath = path.join(`${__dirname}/${req.params[0]}.html`)
     }else{
         filePath = path.join(`${__dirname}/${req.params[0]}`)
-        console.log(filePath)
+        // console.log(filePath)
     }
     createReadStream(filePath)
         .on("error",() => notFound(req,res))

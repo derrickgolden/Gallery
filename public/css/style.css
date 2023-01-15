@@ -513,7 +513,9 @@ li> a:hover::after{
 }
 .cancel-pop{
     color: var(--clr-grey-8);
+    font-size: 1rem;
     width: 2.6rem;
+    height: 2.6rem;
     padding: .5rem;
     margin: 0 1rem;
     text-align: center;
@@ -641,7 +643,7 @@ li> a:hover::after{
     border-radius: var(--radius);
     transition: var(--transition);
     letter-spacing: 2px;
-    margin: 2rem 0;
+    margin: 1rem 0 2rem 0;
 }
 .btn-cart:hover{
     background-color:var(--clr-grey-6) ;
@@ -758,33 +760,18 @@ table th{
     opacity: 0;
 }
 
-@media screen and (max-width:640px){
-    /* number of people */
-    .number{
-        right: 50%;
-        transform: translateX(50%);
-    }
-    .cart{
-        width: 100%;
-    }
-    .client-infor{
-        width: 90%;
-    }
-    .prices{
-        margin: 2rem 0;
-    }
-}
 
 /* client information */
 .client-infor{
-    width: 90%;
+    width: 60%;
     margin: 1rem;
     border:2px solid var(--clr-grey-9);
     padding: 1.4rem;
     position: absolute;
     top:8%;
     text-align: center;
-    /* z-index: 6; */
+    right: 50%;
+    transform: translateX(50%);
     background-color: var(--clr-white);
     transition: var(--transition);
 }
@@ -793,8 +780,13 @@ table th{
     width: 100%;
     padding:.4rem 1rem;
     border-radius: var(--radius);
-    margin: 1rem 0;
+    margin-top: 1rem;
     font-size: 1.4rem;
+}
+.warn{
+    text-align: left;
+    color: rgb(245, 51, 51);
+    height: 1.5rem;
 }
 .loader{
     display: fixed;
@@ -822,5 +814,28 @@ table th{
     to {transform: rotate(1turn);}
 }
 
+@media screen and (max-width:640px){
+    /* number of people */
+    .number{
+        right: 50%;
+        transform: translateX(50%);
+    }
+    .cart{
+        width: 100%;
+    }
+    .client-infor{
+        width: 90%;
+    }
+    .prices{
+        margin: 2rem 0;
+    }
+    .notifications{
+        right: 50%;
+        font-size: 1.5rem;
+        width: 70%;
+        text-align: center;
+        transform: translateX(50%);
+    }
+}
 
 
