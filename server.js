@@ -29,7 +29,6 @@ io.on('connection', async (socket)=>{
     })
 })
 
-
 //static files
 app.use(express.static('public'))
 app.use("/css", express.static(__dirname + 'public/css'))
@@ -39,9 +38,7 @@ app.use("/css", express.static(__dirname + 'public/css'))
 app.get('/*',getHome)
 server.listen(PORT,()=>console.log("Listening on port", PORT))
 
-
-
-const {readFile, createReadStream, rmSync} = require('fs')
+const {createReadStream} = require('fs')
 const path = require('path')
 
 // const filePath = ""

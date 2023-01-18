@@ -12,8 +12,10 @@ const redirectURL = process.env.REDIRECT_URL
 const oAuth2Client = new google.auth.OAuth2(clientID,clientSecret,redirectURL)
 oAuth2Client.setCredentials({refresh_token: refreshToken})
 
+// console.log(oAuth2Client)
 async function sendmail(order){
     try{
+        console.log(order)
         const accessToken = await oAuth2Client.getAccessToken()
         const transport = nodemailer.createTransport({
             service: 'gmail',
@@ -37,12 +39,13 @@ async function sendmail(order){
 
         const result = await transport.sendMail(mailOptions)
         return result;
+        // return accessToken;
     }catch(err){
         return err
     }
 }
 
-// sendmail().then(data =>{
+// sendmail({try: "hello for now"}).then(data =>{
 //     console.log(data)
 // }).catch(err=>{
 //     console.log(err)
